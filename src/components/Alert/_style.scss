@@ -1,16 +1,42 @@
 .alert {
   position: relative;
+  width: 100%;
+  padding: 10px 20px;
+  color: #fff;
+  margin-bottom: 14px;
+  background-color: $primary;
 }
 
 .alert-title {
-
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .alert-content {
-
+  font-size: 14px;
 }
 
 .alert-close {
   position: absolute;
-  font-size: 12px;
+  right: 10px;
+  top: 4px;
+  font-size: 20px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.alert-default {
+
+}
+.alert-success {
+  background-color: $success;
+}
+
+.alert-danger {
+  background-color: $danger;
+}
+
+.alert-warning {
+  background-color: $warning;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import cls from 'classnames';
 
 export type AlertType = 'success' | 'default' | 'danger' | 'warning';
@@ -13,20 +13,29 @@ interface AlertProps {
 
 const Alert: React.FC<AlertProps> = (props) => {
   const { closable, type, title, children, className } = props;
+  const [visible, setVisible] = useState(true);
+
+  if (!visible) return null;
 
   const classes = cls('alert', className, {
     [`alert-${type}`]: type,
-  })
+  });
 
-  return <div className={classes} >
-    <div className='alert-title'>
-      {title}
+  const handleClose = () => {
+    setVisible(false);
+  };
+
+  return (
+    <div className={classes}>
+      {title && <div className="alert-title">{title}</div>}
+      <div className="alert-content">{children}</div>
+      {closable && (
+        <div className="alert-close" onClick={handleClose}>
+          x
+        </div>
+      )}
     </div>
-    <div className='alert-content'>
-      {children}
-    </div>
-    <div className='alert-close'>关闭</div>
-  </div>
-}
+  );
+};
 
 export default Alert;
